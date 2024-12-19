@@ -10,3 +10,14 @@ deactivate
 used packages
 flask
 flask_socketio
+
+for deployment we will need
+wsgi server 
+
+and also 
+pip install gunicorn eventlet
+
+Guicorn and WSGI (Web Server Gateway Interface) used in deploying and serving python web apps, specifically those built with web frameworks like Flask and Django
+
+generate requirements using
+pip freeze > requirements.txt

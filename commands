@@ -1,6 +1,9 @@
 to activate
 .\venv\Scripts\activate
 
+within environment execute the entry file
+python ./app.py
+
 to deactivate
 deactivate
 

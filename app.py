@@ -16,12 +16,12 @@ def index():
 @socketio.on("connect")
 def handle_connect():
     username = f"User_{random.randint(1000, 9999)}"
-    gender = random.choice(["boy", "girl"])
-    avatar_url = f"https://avatar.iran.liara.run/public/{gender}?username={username}"
+    gender = random.choice(["girl","boy"])
+    avatar_url = f" https://avatar.iran.liara.run/public/{gender}?username={username}"
 
-    users[request.sid] = {"username": username, "avatar_url": avatar_url}
+    users[request.sid] = {"username": username, "avatar": avatar_url}
 
-    emit("user_joined", {"username": username, "avatar_url": avatar_url}, broadcast=True)
+    emit("user_joined", {"username": username, "avatar": avatar_url}, broadcast=True)
 
     emit("set_username", {"username": username})
 
@@ -37,7 +37,7 @@ def handle_message(data):
     if user:
         emit("new_message", {
             "username": user["username"],
-            "avatar_url": user["avatar_url"],
+            "avatar": user["avatar"],
             "message": data["message"]
         }, broadcast=True)
 

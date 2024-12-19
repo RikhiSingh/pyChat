@@ -1,0 +1,9 @@
+to activate
+.\venv\Scripts\activate
+
+to deactivate
+deactivate
+
+used packages
+flask
+flask_socketio

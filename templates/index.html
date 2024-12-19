@@ -230,12 +230,18 @@
       updateUsernameButton.addEventListener("click", updateUsername);
 
       function sendMessage() {
-        {
-          const message = messageInput.value.trim();
-          if (message) {
-            socket.emit("send_message", { message });
-            messageInput.value = "";
-          }
+        const message = messageInput.value.trim();
+        if (message) {
+          socket.emit("send_message", { message });
+          messageInput.value = "";
+        }
+      }
+
+      function updateUsername() {
+        const newUsername = usernameInput.value.trim();
+        if (newUsername && newUsername !== currentUsername) {
+          socket.emit("update_username", { username: newUsername });
+          usernameInput.value = "";
         }
       }
 
@@ -272,14 +278,6 @@
         }
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
-      }
-
-      function updateUsername() {
-        const newUsername = usernameInput.value.trim();
-        if (newUsername && newUsername !== currentUsername) {
-          socket.emit("update_username", { username: newUsername });
-          usernameInput.value = "";
-        }
       }
     </script>
   </body>

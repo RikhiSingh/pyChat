@@ -47,7 +47,7 @@ def handle_update_username(data):
     new_username = data["username"]
     users[request.sid]["username"] = new_username
 
-    emit("user_updated", {
+    emit("username_updated", {
         "old_username": old_username,
         "new_username": new_username
     }, broadcast=True)
